@@ -25,11 +25,12 @@ const RegistrationForm = () => {
   const [informationOfPerson, setinformationOfPerson] = useState(null);
 
   const onSubmit = (data) => {
-    //console.log(data);
-    setinformationOfPerson(data);
-    setModalActive(true);
-
-    console.log(informationOfPerson);
+    if (Object.keys(errors).length === 0) {
+      setinformationOfPerson(data);
+      setModalActive(true);
+    } else {
+      console.log("Ошибка в данных:", errors);
+    }
   };
 
   return (
