@@ -17,22 +17,10 @@
 }
 
 .formEl {
+  border-radius: 8px;
   margin-bottom: 1rem;
+  border: 1px solid black;
 }
-label {
-  text-align: left;
-  margin-bottom: 5px;
-}
-/* Input {
-  padding: 10px;
-  margin-bottom: 15px;
-  width: 100%;
-  box-sizing: border-box;
-}
-Button {
-  padding: 10px;
-  width: 100%;
-} */
 p {
   color: red;
   max-width: 100%;

@@ -33,8 +33,6 @@ const RegistrationForm = () => {
     setModalActive(false);
   };
 
-  console.log(modalActive);
-
   return (
     <form className="formRegistration" onSubmit={handleSubmit(onSubmit)}>
       <h1>Форма регистрации</h1>
