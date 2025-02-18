@@ -10,8 +10,9 @@ const RegistrationForm = () => {
     watch,
     handleSubmit,
     getValues,
-    formState: { errors },
-  } = useForm();
+    reset,
+    formState: { errors, isValid },
+  } = useForm({ mode: "onChange" });
 
   const password = watch("password");
 
@@ -23,19 +24,16 @@ const RegistrationForm = () => {
 
   const [modalActive, setModalActive] = useState(false);
 
-  const [informationOfPerson, setinformationOfPerson] = useState(null);
-
-  const onSubmit = (data) => {
-    if (Object.keys(errors).length === 0) {
-      setModalActive(!modalActive);
-      console.log(data);
-      const value = getValues();
-      setinformationOfPerson(value);
-      console.log(value);
-    } else {
-      console.log("Ошибка в данных:", errors);
-    }
+  const onSubmit = () => {
+    setModalActive(true);
   };
+
+  const handleReset = () => {
+    reset();
+    setModalActive(false);
+  };
+
+  console.log(modalActive);
 
   return (
     <form className="formRegistration" onSubmit={handleSubmit(onSubmit)}>
@@ -185,10 +183,18 @@ const RegistrationForm = () => {
       />
       {errors.telephon && <p>{errors.telephon.message}</p>}
 
-      <Button className="formEl" htmlType="submit" onClick={onSubmit}>
+      <Button
+        className="formEl"
+        htmlType="submit"
+        // onClick={onSubmit}
+        disabled={!isValid}
+      >
         Зарегестрироваться
       </Button>
-      <ModalWindow active={modalActive} dataPerson={informationOfPerson} />
+      <ModalWindow active={modalActive} dataPerson={getValues()} />
+      <Button className="formEl" type="button" onClick={handleReset}>
+        Сброс
+      </Button>
     </form>
   );
 };

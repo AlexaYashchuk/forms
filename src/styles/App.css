@@ -23,7 +23,7 @@ label {
   text-align: left;
   margin-bottom: 5px;
 }
-Input {
+/* Input {
   padding: 10px;
   margin-bottom: 15px;
   width: 100%;
@@ -32,7 +32,7 @@ Input {
 Button {
   padding: 10px;
   width: 100%;
-}
+} */
 p {
   color: red;
   max-width: 100%;
