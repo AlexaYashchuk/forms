@@ -9,6 +9,7 @@ const RegistrationForm = () => {
     control,
     watch,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm();
 
@@ -26,8 +27,11 @@ const RegistrationForm = () => {
 
   const onSubmit = (data) => {
     if (Object.keys(errors).length === 0) {
-      setinformationOfPerson(data);
-      setModalActive(true);
+      setModalActive(!modalActive);
+      console.log(data);
+      const value = getValues();
+      setinformationOfPerson(value);
+      console.log(value);
     } else {
       console.log("Ошибка в данных:", errors);
     }
@@ -184,11 +188,7 @@ const RegistrationForm = () => {
       <Button className="formEl" htmlType="submit" onClick={onSubmit}>
         Зарегестрироваться
       </Button>
-      <ModalWindow
-        active={modalActive}
-        setActive={setModalActive}
-        dataPerson={informationOfPerson}
-      />
+      <ModalWindow active={modalActive} dataPerson={informationOfPerson} />
     </form>
   );
 };

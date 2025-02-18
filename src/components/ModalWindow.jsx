@@ -1,20 +1,31 @@
-import React from "react";
-import "../styles/ModalWindow.css";
+import React, { useState, useEffect } from "react";
+import { Modal } from "antd";
 
-const ModalWindow = ({ active, setActive, dataPerson }) => {
-  if (!active) return null;
+const ModalWindow = ({ active, dataPerson }) => {
+  const [isModalOpen, setIsModalOpen] = useState(active);
 
-  //   const obj = JSON.stringify(dataPerson);
-  //console.log(dataPerson);
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    setIsModalOpen(active);
+  }, [active]);
+
+  const obj = JSON.stringify(dataPerson);
 
   return (
-    <div className="ModalWindow">
-      <div className="ModalWindowContent">
-        <h2>Вы успешно зарегестрированы!</h2>
-        <p>{dataPerson.name}</p>
-        <button onClick={() => setActive(!active)}>Закрыть</button>
-      </div>
-    </div>
+    <Modal
+      title="Вы успешно зарегестрированы!"
+      open={isModalOpen}
+      onOk={handleOk}
+      onCancel={handleCancel}
+    >
+      <p className="p">{obj}</p>
+    </Modal>
   );
 };
 
