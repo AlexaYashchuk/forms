@@ -33,6 +33,8 @@ const RegistrationForm = () => {
     setModalActive(false);
   };
 
+  console.log(modalActive);
+
   return (
     <form className="formRegistration" onSubmit={handleSubmit(onSubmit)}>
       <h1>Форма регистрации</h1>
@@ -181,12 +183,7 @@ const RegistrationForm = () => {
       />
       {errors.telephon && <p>{errors.telephon.message}</p>}
 
-      <Button
-        className="formEl"
-        htmlType="submit"
-        // onClick={onSubmit}
-        disabled={!isValid}
-      >
+      <Button className="formEl" htmlType="submit" disabled={!isValid}>
         Зарегестрироваться
       </Button>
       <ModalWindow active={modalActive} dataPerson={getValues()} />
